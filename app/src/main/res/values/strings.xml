@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">SimpleChat</string>
+    <string name="app_name">Simple Chat</string>
+
+    <!-- Login -->
+    <string name="login.message.mail">Mail</string>
+    <string name="login.message.pass">Password</string>
+    <string name="login.button.sign.in">Login</string>
+    <string name="login.button.sign.up">Register</string>
 </resources>
