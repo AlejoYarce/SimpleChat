@@ -6,4 +6,8 @@
     <string name="login.message.pass">Password</string>
     <string name="login.button.sign.in">Login</string>
     <string name="login.button.sign.up">Register</string>
+    <string name="login.error.message.sign.in">The name or pass are incorrect %s</string>
+    <string name="login.error.message.sign.up">Error trying to create a new user %s</string>
+    <string name="login.success.message.sign.up">New user created!</string>
+
 </resources>
