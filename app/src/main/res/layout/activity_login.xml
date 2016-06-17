@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="@string/login.button.sign.in"
             android:id="@+id/btnSignIn"
-            android:background="@color/lightColorPrimary"
+            android:background="@color/colorAccentLight"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp" />
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="@string/login.button.sign.up"
             android:id="@+id/btnSignUp"
-            android:background="@color/lightColorPrimary" />
+            android:background="@color/colorAccentLight" />
     </LinearLayout>
 
     <ProgressBar

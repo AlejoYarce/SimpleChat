@@ -14,6 +14,7 @@ import com.alejoyarce.simplechat.R;
 import com.alejoyarce.simplechat.contactlist.ContactListActivity;
 import com.alejoyarce.simplechat.login.mvp.LoginPresenter;
 import com.alejoyarce.simplechat.login.mvp.LoginView;
+import com.alejoyarce.simplechat.login.mvp.impl.LoginPresenterImpl;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,19 +37,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView(R.layout.activity_login);
 
         ButterKnife.bind(this);
+        loginPresenter = new LoginPresenterImpl(this);
     }
-
-    @OnClick(R.id.btnSignIn)
-    public void onClickSignIn() {
-
-    }
-
-    @OnClick(R.id.btnSignUp)
-    public void onClickSignUp() {
-
-    }
-
-
 
     @Override
     public void enableInputs() {
@@ -57,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void disableInputs() {
-        setInputsStatus(true);
+        setInputsStatus(false);
     }
 
     private void setInputsStatus(boolean enable) {
