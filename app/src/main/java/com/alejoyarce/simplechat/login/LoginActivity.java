@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         ButterKnife.bind(this);
         loginPresenter = new LoginPresenterImpl(this);
+//        loginPresenter.checkAuthenticatedUser();
     }
 
     @Override
