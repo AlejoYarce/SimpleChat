@@ -1,5 +1,6 @@
 package com.alejoyarce.simplechat.utils;
 
+import com.alejoyarce.simplechat.login.domain.User;
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -88,7 +89,7 @@ public class FirebaseHelper {
     }
 
     public void singOff() {
-        notifyConnectionChange(false, true);
+        notifyConnectionChange(User.OFFLINE, true);
     }
 
     private void notifyConnectionChange(final boolean online, final boolean signOff) {

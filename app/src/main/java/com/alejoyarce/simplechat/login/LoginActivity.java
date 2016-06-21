@@ -35,10 +35,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         ButterKnife.bind(this);
+
         loginPresenter = new LoginPresenterImpl(this);
-//        loginPresenter.checkAuthenticatedUser();
+        loginPresenter.onCreate();
+        loginPresenter.checkAuthenticatedUser();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginPresenter.onDestroy();
     }
 
     @Override
@@ -87,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void loginError(String error) {
+        editTxtPass.requestFocus();
         editTxtPass.setText("");
         String msgError = String.format(getString(R.string.login_error_message_sign_in), error);
         editTxtPass.setError(msgError);
