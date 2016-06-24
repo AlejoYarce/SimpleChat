@@ -68,28 +68,30 @@ public class LoginRepositoryImpl implements LoginRepository {
 
     private void getUserReference() {
         myUserReference = firebaseHelper.getMyUserReference();
-        myUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User currentUser = dataSnapshot.getValue(User.class);
-                if ( currentUser == null ) {
-                    String userMail = firebaseHelper.getAuthMail();
-                    if ( userMail != null ) {
-                        currentUser = new User();
-                        currentUser.setMail(userMail);
-                        firebase.setValue(currentUser);
+        if ( myUserReference != null ) {
+            myUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    User currentUser = dataSnapshot.getValue(User.class);
+                    if (currentUser == null) {
+                        String userMail = firebaseHelper.getAuthMail();
+                        if (userMail != null) {
+                            currentUser = new User();
+                            currentUser.setMail(userMail);
+                            firebase.setValue(currentUser);
+                        }
                     }
+
+                    firebaseHelper.changeUserConnectionStatus(User.ONLINE);
+                    postEvent(LoginEvent.onSignInSuccess);
                 }
 
-                firebaseHelper.changeUserConnectionStatus(User.ONLINE);
-                postEvent(LoginEvent.onSignInSuccess);
-            }
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
+                }
+            });
+        }
     }
 
     private void postEvent(int eventType, String errorMessage) {

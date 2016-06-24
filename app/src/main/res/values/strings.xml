@@ -10,4 +10,8 @@
     <string name="login.error.message.sign.up">Error trying to create a new user %s</string>
     <string name="login.success.message.sign.up">New user created!</string>
 
+    <!-- Contacts List -->
+    <string name="contact.list.menu.action.sign.off">Sign Off</string>
+    <string name="contact.list.title">Contacts</string>
+
 </resources>

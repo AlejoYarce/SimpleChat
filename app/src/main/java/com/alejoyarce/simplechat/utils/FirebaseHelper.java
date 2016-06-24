@@ -27,7 +27,7 @@ public class FirebaseHelper {
         String mail = null;
         if ( authData != null ) {
             Map<String, Object> providerData = authData.getProviderData();
-            mail = providerData.get("mail").toString();
+            mail = providerData.get("email").toString();
         }
 
         return mail;
