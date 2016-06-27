@@ -36,6 +36,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:tint="@android:color/white"
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@android:drawable/ic_input_add"
+        android:id="@+id/floatingActionButton" />
 
 </android.support.design.widget.CoordinatorLayout>

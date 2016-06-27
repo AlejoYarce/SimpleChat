@@ -21,7 +21,7 @@ public class User {
         this.mail = mail;
     }
 
-    public Boolean getOnline() {
+    public Boolean isOnline() {
         return online;
     }
 
