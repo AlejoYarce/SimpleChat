@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class User {
 
-    private String mail;
+    private String email;
     private Boolean online;
     private Map<String, Boolean> contacts;
 
@@ -14,11 +14,11 @@ public class User {
     public User() { }
 
     public String getMail() {
-        return mail;
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String email) {
+        this.email = email;
     }
 
     public Boolean isOnline() {
@@ -36,4 +36,17 @@ public class User {
     public void setContacts(Map<String, Boolean> contacts) {
         this.contacts = contacts;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        boolean equal = false;
+
+        if ( object instanceof User ) {
+            User master = (User)object;
+            equal = this.email.equals(master.getMail());
+        }
+
+        return equal;
+    }
+
 }

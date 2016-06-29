@@ -26,4 +26,5 @@ public class LoginEvent {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
 }

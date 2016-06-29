@@ -12,7 +12,9 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class LoginRepositoryImpl implements LoginRepository {
 
@@ -72,9 +74,15 @@ public class LoginRepositoryImpl implements LoginRepository {
             myUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    User currentUser = dataSnapshot.getValue(User.class);
-                    if (currentUser == null) {
-                        String userMail = firebaseHelper.getAuthMail();
+//                    User currentUser = dataSnapshot.getValue(User.class);
+                    Map<String, Object> userMap = (HashMap)dataSnapshot.getValue();
+                    User currentUser = new User();
+                    currentUser.setMail(String.valueOf(userMap.get("email")));
+                    currentUser.setOnline(new Boolean(String.valueOf(userMap.get("online"))));
+                    Map<String, Boolean> contacts = (HashMap)userMap.get("contacts");
+                    currentUser.setContacts(contacts);
+                    if ( currentUser == null ) {
+                        String userMail = firebaseHelper.getAuthUserMail();
                         if (userMail != null) {
                             currentUser = new User();
                             currentUser.setMail(userMail);

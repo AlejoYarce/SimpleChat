@@ -22,7 +22,7 @@ public class FirebaseHelper {
         return SingletonHolder.INSTANCE;
     }
 
-    public String getAuthMail() {
+    public String getAuthUserMail() {
         AuthData authData = dataReference.getAuth();
         String mail = null;
         if ( authData != null ) {
@@ -45,7 +45,7 @@ public class FirebaseHelper {
     }
 
     public Firebase getMyUserReference() {
-        return getUserReference(getAuthMail());
+        return getUserReference(getAuthUserMail());
     }
 
     public Firebase getContactsReference(String mail) {
@@ -53,7 +53,7 @@ public class FirebaseHelper {
     }
 
     public Firebase getMyContactsReference() {
-        return getUserReference(getAuthMail());
+        return getUserReference(getAuthUserMail());
     }
 
     public Firebase getOneContactsReference(String mainMail, String childMail) {
@@ -63,7 +63,7 @@ public class FirebaseHelper {
     }
 
     public Firebase getChatsReference(String receiver) {
-        String keySender = getAuthMail().replace(".", "_");
+        String keySender = getAuthUserMail().replace(".", "_");
         String keyReceiver = receiver.replace(".", "_");
 
         String keyChat = keySender + Constants.FIREBASE_CHATS_SEPARATOR + keyReceiver;
@@ -93,7 +93,7 @@ public class FirebaseHelper {
     }
 
     private void notifyConnectionChange(final boolean online, final boolean signOff) {
-        final String myMail = getAuthMail();
+        final String myMail = getAuthUserMail();
 
         getMyContactsReference().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

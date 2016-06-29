@@ -57,6 +57,27 @@ public class ContactlListAdapter extends RecyclerView.Adapter<ContactlListAdapte
         return contactList.size();
     }
 
+    public void add(User user) {
+        if ( !contactList.contains(user) ) {
+            contactList.add(user);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void update(User user) {
+        if ( contactList.contains(user) ) {
+            contactList.set(contactList.indexOf(user), user);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void remove(User user) {
+        if ( contactList.contains(user) ) {
+            contactList.remove(user);
+            notifyDataSetChanged();
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.imgAvatar) CircleImageView imgAvatar;
